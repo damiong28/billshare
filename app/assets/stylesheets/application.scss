@@ -3,9 +3,10 @@
 @import "bootstrap";
 
 .navbar-custom {
-	background-color:#229922;
+	background-color:#005555;
     color:#ffffff;
   	border-radius:0;
+  	margin-bottom:0px;
 }
   
 .navbar-custom .navbar-nav > li > a {
@@ -14,23 +15,23 @@
   	padding-right:20px;
 }
 .navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-  background-color: #33aa33;
+  background-color: #005555;
 }
 
 .navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus, .navbar-custom .navbar-nav .open>a  { 
-  background-color: #33aa33;
+  background-color: #005555;
 }
 
      
 /* dropdown */
 .navbar-custom .navbar-nav .dropdown-menu  { 
-  background-color: #33aa33;
+  background-color: #005555;
 }
 .navbar-custom .navbar-nav .dropdown-menu>li>a  { 
   color: #fff;
 }
 .navbar-custom .navbar-nav .dropdown-menu>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  { 
-  color: #33aa33;
+  color: #005555;
 }
       
 .navbar-custom .navbar-brand {
@@ -40,5 +41,25 @@
   	background-color:#eeeeee;
 }
 .navbar-custom .icon-bar {
-  	background-color:#33aa33;
+  	background-color:#005555;
+}
+
+/* login and registration */
+.login-box {
+  //background-color:#00BBBB;
+  margin-top: 6em;
+}
+
+.register-bg {
+  	background-image: url("stars-optimized.jpg");
+  	height:100vh;
+}
+
+.login-bg {
+  	background-image: url("aurora-optimized.jpg");
+  	height:100vh;
+}
+
+.white-text {
+  color:#FFFFFF;
 }

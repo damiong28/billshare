@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718031402) do
+ActiveRecord::Schema.define(version: 20160721171701) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,5 +39,42 @@ ActiveRecord::Schema.define(version: 20160718031402) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   add_index "accounts", ["unlock_token"], name: "index_accounts_on_unlock_token", unique: true
+
+  create_table "bills", force: :cascade do |t|
+    t.string   "month"
+    t.decimal  "bill_amount",  precision: 6, scale: 2
+    t.float    "total_data"
+    t.decimal  "data_cost",    precision: 6, scale: 2
+    t.integer  "account_id"
+    t.float    "data_overage"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "bills", ["account_id"], name: "index_bills_on_account_id"
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "bill_id"
+    t.integer  "user_id"
+    t.decimal  "surcharges", precision: 6, scale: 2
+    t.decimal  "data_used",  precision: 6, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "charges", ["bill_id"], name: "index_charges_on_bill_id"
+  add_index "charges", ["user_id"], name: "index_charges_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "account_id"
+    t.text     "message"
+    t.decimal  "balance",    precision: 6, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "users", ["account_id"], name: "index_users_on_account_id"
 
 end
