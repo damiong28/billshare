@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">New User</h1>
+      <%= form_for (@user) do |f| %>
+        <%= f.text_field :name, placeholder: "Name",
+            class: "form-control" %><br />
+        <%= f.text_field :email, placeholder: "Email", 
+            class: "form-control" %><br />
+        <%= f.text_area :message, placeholder: "Default email message",
+            class: "form-control" %><br />
+        <%= f.hidden_field :account_id, :value => current_account.id %>
+        <%= f.hidden_field :balance, :value => '0.00' %>
+        <%= f.submit class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

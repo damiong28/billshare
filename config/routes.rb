@@ -9,6 +9,7 @@ Rails.application.routes.draw do
    root 'bills#index', as: 'root_path'
    resources :users
    resources :bills
+   resources :charges
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
