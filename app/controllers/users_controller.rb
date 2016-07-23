@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_account!
+    
   def index
     @users = User.where(:account_id => current_account.id)
   end
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  
+
   private
   
     def user_params

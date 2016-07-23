@@ -27,10 +27,10 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 module AuthHelpers
-  def sign_in_with (user)
-    visit '/'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+  def sign_in_with (account)
+    visit '/accounts/sign_in'
+    fill_in 'Email', with: account.email
+    fill_in 'Password', with: account.password
     click_button 'Log in'
   end
 end
