@@ -2,21 +2,28 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1 class="text-center">New Bill</h1>
-      <%= form_for :bill do |f| %>
+      <%= form_for @bill do |f| %>
         <div class="form-group">
-          <%= f.select :month, ['January', 'February', 'March', 'April', 'May', 
-          'June', 'July', 'August', 'September', 'October', 'November',
-          'December'] %>
+          <%= f.label "Date from Bill:" %>
+          <%= f.date_select(:bill_date) %>
         </div>
-        <%= f.text_field :bill_amount, placeholder: "Total amount of Bill",
-            class: "form-control" %><br />
-        <%= f.text_field :total_data, placeholder: "Total amount of Data used", 
-            class: "form-control" %><br />
-        <%= f.text_field :data_cost, placeholder: "Total cost for Data",
-            class: "form-control" %><br />
-        <%= f.text_field :data_overage, placeholder: "Amount of data overage",
-            class: "form-control" %><br />
-        <%= f.submit class: 'btn btn-success' %>
+        <div class="form-group">
+          <%= f.label "Total amount of Bill:" %>
+          <%= f.text_field :bill_amount, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Total amount of Data used:" %>
+          <%= f.text_field :total_data, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Total cost for Data:" %>
+          <%= f.text_field :data_cost, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Amount of data overage" %><b> (GB):</b>
+          <%= f.text_field :data_overage, class: "form-control" %>
+        </div>
+        <%= f.submit "Start Bill", class: 'btn btn-success' %>
       <% end %>
     </div>
   </div>

@@ -1,2 +1,29 @@
-<h1>Charges#new</h1>
-<p>Find me in app/views/charges/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">New Charge</h1>
+      <%= form_for (@charge) do |f| %>
+        <% if @charge.errors.any? %>
+          <div id="error_explained">
+            <h4>
+              <%= pluralize(@charge.errors.count, "error") %>
+               prevented the charge from being created
+            </h4>
+            <ul>
+              <% @charge.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.text_field :surcharges, placeholder: "Name",
+            class: "form-control" %><br />
+        <%= f.text_field :data_used, placeholder: "Email", 
+            class: "form-control" %><br />
+        <%= f.hidden_field :account_id, :value => current_account.id %>
+        <%= f.hidden_field :bill_id, :value => params[:bill][:bill_id] %>
+        <%= f.submit class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

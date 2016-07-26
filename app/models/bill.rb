@@ -1,5 +1,5 @@
 class Bill < ActiveRecord::Base
-    #t.string :month
+    #t.date :bill_date
     #t.decimal :bill_amount (calculate_
     #t.float :total_data 
     #t.decimal :data_cost

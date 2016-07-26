@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160721171701) do
   add_index "accounts", ["unlock_token"], name: "index_accounts_on_unlock_token", unique: true
 
   create_table "bills", force: :cascade do |t|
-    t.string   "month"
+    t.date     "bill_date"
     t.decimal  "bill_amount",  precision: 6, scale: 2
     t.float    "total_data"
     t.decimal  "data_cost",    precision: 6, scale: 2
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160721171701) do
     t.integer  "user_id"
     t.decimal  "surcharges", precision: 6, scale: 2
     t.decimal  "data_used",  precision: 6, scale: 2
+    t.boolean  "paid"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end

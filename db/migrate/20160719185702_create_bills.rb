@@ -1,7 +1,7 @@
 class CreateBills < ActiveRecord::Migration
   def change
     create_table :bills do |t|
-      t.string :month
+      t.date :bill_date
       t.decimal :bill_amount, scale: 2, precision: 6
       t.float :total_data
       t.decimal :data_cost, scale: 2, precision: 6

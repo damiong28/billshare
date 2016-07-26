@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Bill Creator</h1>
+      <%= link_to "Edit Bill Header", edit_bill_url(params[:id]), class: "btn btn-primary" %>
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>Date</th>
+            <th>Data Used</th>
+            <th>Data Overage</th>
+            <th>Data Fee</th>
+            <th>Bill Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @bill.bill_date %></td>
+            <td><%= @bill.total_data %> GB</td>
+            <td><%= @bill.data_overage %> GB</td>
+            <td><%= number_to_currency(@bill.data_cost) %></td>
+            <td><%= number_to_currency(@bill.bill_amount) %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "Add User Charge", new_bill_charge_url(params[:id]), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

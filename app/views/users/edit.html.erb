@@ -16,12 +16,22 @@
             </ul>
           </div>
         <% end %>
-        <%= f.text_field :name, placeholder: "Name",
-            class: "form-control" %><br />
-        <%= f.text_field :email, placeholder: "Email", 
-            class: "form-control" %><br />
-        <%= f.text_area :message, placeholder: "Default email message",
-            class: "form-control" %><br />
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, placeholder: "Name",
+            class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, placeholder: "Email", 
+            class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :message, "Custom email message" %>
+          <%= f.text_area :message, 
+              placeholder: "Custom message to be included in email (optional)",
+              class: "form-control" %>        
+        </div>
         <%= f.submit class: 'btn btn-success' %>
       <% end %>
     </div>
