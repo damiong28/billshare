@@ -1,4 +1,8 @@
 class BillsController < ApplicationController
+    before_action :authenticate_account!, only: [:show, :new, :create, 
+    :edit, :destroy]
+    
+    
   def index
     if account_signed_in?
       @bills = Bill.where(:account_id => current_account.id)
