@@ -4,6 +4,19 @@
           <div class="col-md-6 col-md-offset-3">
               <h1>Bills Index</h1>
               <%= link_to "New Bill", new_bill_url, class: "btn btn-primary" %>
+              <table class="table table-striped">
+                <thead>
+                 <tr class="text-center">
+                   <th>Date</th>
+                   <th>Data Used</th>
+                   <th>Bill Total</th>
+                   <th>Balance</th>
+                 </tr>
+                </thead>
+                <tbody>
+                 <%= render @bills %>
+                </tbody>
+              </table>
           </div>
       </div>
   </div>

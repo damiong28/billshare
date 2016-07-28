@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to User.find(charge.user_id).name, edit_bill_charge_url(bill_id: params[:id], id: charge.id) %></td>
+  <td><%= number_to_currency(charge.surcharges) %></td>
+  <td><%= charge.data_used %> GB</td>
+  <td><%= charge.paid %></td>
+</tr>

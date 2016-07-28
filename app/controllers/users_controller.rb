@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_account!
+  before_action :correct_account, only: [:edit, :show, :destroy, :update]
     
   def index
-    @users = User.where(:account_id => current_account.id)
+    @users = User.where(:account_id == current_account.id)
   end
   
   def new
@@ -49,5 +50,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :message, :account_id, 
                     :balance)
+    end
+    
+    def correct_account
+      @user = User.find(params[:id])
+      unless @user.account_id == current_account.id
+        flash[:warning] = "That user doesn't belong to you!"
+        redirect_to root_path_url
+      end
     end
 end

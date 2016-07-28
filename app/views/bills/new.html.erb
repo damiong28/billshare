@@ -24,6 +24,7 @@
           <%= f.label "Amount of data overage" %><b> (GB):</b>
           <%= f.text_field :data_overage, class: "form-control" %>
         </div>
+        <%= f.hidden_field :account_id, :value => current_account.id %>
         <%= f.submit "Start Bill", class: 'btn btn-success' %>
       <% end %>
     </div>

@@ -52,4 +52,13 @@ feature 'Creating a new user' do
     expect(page).to have_content("Email is invalid")
   end
 
+   scenario "restrict access to account owner" do
+    other_account = create(:account, email: "bar@foo.com", id: 2)
+    user = create(:user)
+    click_link 'Logout'
+    sign_in_with other_account
+    visit '/users/1/edit'
+    expect(page).to have_content("That user doesn't belong to you!")
+    expect(page).to_not have_content("Update User")
+  end
 end 

@@ -4,4 +4,7 @@ class Account < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
+  has_many :bills
+  has_many :users
+  has_many :charges
 end

@@ -1,9 +1,9 @@
-<% #charges/new %>
+<% #charges/edit %>
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="text-center">New Charge</h1>
-      <%= form_for @charge, url: bill_charges_path(params[:bill_id]), html: { method: :post }  do |f| %>
+      <h1 class="text-center">Edit Charge</h1>
+      <%= form_for @charge, url: bill_charge_path(params[:bill_id], params[:id]), html: { method: :patch }  do |f| %>
         <%= render 'shared/form_errors', item: @charge %>
         <div class="form-group">
           <%= f.label :user %>
@@ -21,6 +21,9 @@
         <%= f.hidden_field :bill_id, :value => params[:bill_id] %>
         <%= f.hidden_field :paid, :value => false %>
         <%= f.submit class: 'btn btn-success' %>
+        <%= link_to "Delete Charge", bill_charge_path(params[:bill_id], 
+              params[:id]), method: :delete, class: "btn btn-danger pull-right", 
+              data: { confirm: "Delete charge?" } %>
       <% end %>
     </div>
   </div>

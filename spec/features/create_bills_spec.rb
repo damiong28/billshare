@@ -47,4 +47,16 @@ feature 'Creating a new bill' do
     expect(page).to have_content("Data cost must be greater than or equal to 0")
     expect(page).to have_content("Data overage must be greater than or equal to 0")
   end
+  
+   scenario "restrict access to account owner" do
+    other_account = create(:account, email: "bar@foo.com", id: 2)
+    bill = create(:bill)
+    click_link 'Logout'
+    sign_in_with other_account
+    visit '/'
+    expect(page).to_not have_content("100.00")
+    visit '/bills/1/edit'
+    expect(page).to have_content("That bill doesn't belong to you!")
+    expect(page).to_not have_content("Update Bill")
+  end
 end 

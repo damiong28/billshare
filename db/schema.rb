@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160721171701) do
   create_table "charges", force: :cascade do |t|
     t.integer  "bill_id"
     t.integer  "user_id"
+    t.integer  "account_id",                         null: false
     t.decimal  "surcharges", precision: 6, scale: 2
     t.decimal  "data_used",  precision: 6, scale: 2
     t.boolean  "paid"
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160721171701) do
     t.datetime "updated_at",                         null: false
   end
 
+  add_index "charges", ["account_id"], name: "index_charges_on_account_id"
   add_index "charges", ["bill_id"], name: "index_charges_on_bill_id"
   add_index "charges", ["user_id"], name: "index_charges_on_user_id"
 
