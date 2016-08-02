@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_account, only: [:edit, :show, :destroy, :update]
     
   def index
-    @users = User.where(:account_id == current_account.id)
+    @users = User.where(:account_id => current_account.id)
   end
   
   def new
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def destroy
     @user=User.find(params[:id])
     @user.destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "User deleted."
     redirect_to users_url
   end
   

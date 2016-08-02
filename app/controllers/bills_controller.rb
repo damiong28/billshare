@@ -32,6 +32,16 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
   end
   
+  def update
+    @bill = Bill.find(params[:id])
+    if @bill.update_attributes(bill_params)
+      flash[:success] = "Bill updated!"
+      redirect_to @bill
+    else
+      render 'edit'
+    end
+  end
+  
   private
     
     def bill_params

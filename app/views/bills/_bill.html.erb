@@ -1,5 +1,5 @@
 <tr> 
-  <td><%= link_to bill.bill_date, bill %></td>
+  <td><%= link_to bill.bill_date, bill, id: "bill-#{bill.id}" %></td>
   <td><%= bill.total_data %> GB</td>
   <td><%= number_to_currency(bill.bill_amount) %></td>
   <td>$FILL_IN</td>

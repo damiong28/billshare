@@ -2,7 +2,7 @@
   <div id="error_explained">
     <h4>
       <%= pluralize(item.errors.count, "error") %>
-       prevented the <%= item.class.model_name.human %> from being created
+       prevented the <%= item.class.model_name.human.downcase %> from being saved:
     </h4>
     <ul>
       <% item.errors.full_messages.each do |msg| %>
