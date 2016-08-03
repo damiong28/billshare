@@ -15,13 +15,11 @@ feature 'Editing a bill:' do
     fill_in 'bill_bill_amount', with: '200'
     fill_in 'bill_total_data', with: '10'
     fill_in 'bill_data_cost', with: '40'
-    fill_in 'bill_data_overage', with: '1'
     click_button 'Update Bill'
     expect(page).to have_content("Bill updated!")
     expect(page).to have_content("$200.00")
     expect(page).to have_content("10.0 GB")
     expect(page).to have_content("$40.00")
-    expect(page).to have_content("1.0 GB")
   end
   
   scenario "must sign in to edit bill" do
@@ -37,11 +35,9 @@ feature 'Editing a bill:' do
     fill_in 'bill_bill_amount', with: ''
     fill_in 'bill_total_data', with: ''
     fill_in 'bill_data_cost', with: ''
-    fill_in 'bill_data_overage', with: ''
     click_button 'Update Bill'
     expect(page).to have_content("Data cost can't be blank")
     expect(page).to have_content("Total data can't be blank")
-    expect(page).to have_content("Data overage can't be blank")
     expect(page).to have_content("Bill amount can't be blank")
   end
   
@@ -50,12 +46,10 @@ feature 'Editing a bill:' do
     fill_in 'bill_bill_amount', with: '-200'
     fill_in 'bill_total_data', with: '-10'
     fill_in 'bill_data_cost', with: '-40'
-    fill_in 'bill_data_overage', with: '-1'
     click_button 'Update Bill'
     expect(page).to have_content("Bill amount must be greater than or equal to 0")
     expect(page).to have_content("Total data must be greater than or equal to 0")
     expect(page).to have_content("Data cost must be greater than or equal to 0")
-    expect(page).to have_content("Data overage must be greater than or equal to 0")
   end
   
    scenario "restrict access to account owner" do

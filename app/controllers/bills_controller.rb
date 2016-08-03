@@ -42,11 +42,18 @@ class BillsController < ApplicationController
     end
   end
   
+  def destroy
+    @bill = Bill.find(params[:id])
+    @bill.destroy
+    flash[:success] = "Bill deleted!"
+    redirect_to bills_url
+  end
+  
   private
     
     def bill_params
-      params.require(:bill).permit(:bill_date, :bill_amount, :total_data, :data_cost,
-        :account_id, :data_overage)
+      params.require(:bill).permit(:bill_date, :bill_amount, :total_data, 
+        :data_cost, :account_id, :data_overage)
     end
     
     def correct_account

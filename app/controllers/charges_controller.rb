@@ -41,7 +41,8 @@ class ChargesController < ApplicationController
   
   def charge_params
     params.require(:charge).permit(:user_id, :surcharges, :data_used, 
-        :account_id, :bill_id, :paid)
+        :account_id, :bill_id, :paid, :data_percentage, :data_share, 
+        :personal_total)
   end
   
   def correct_account

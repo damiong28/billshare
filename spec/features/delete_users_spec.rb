@@ -35,4 +35,13 @@ feature 'Deleting a user:' do
     expect(page).to have_content("That user doesn't belong to you!")
     expect(page).to_not have_content("Delete User")
   end
+  
+  scenario "can't delete others' users by http" do
+    other_account = create(:account, email: "bar@foo.com", id: 2)
+    click_link 'Logout'
+    sign_in_with other_account
+    page.driver.submit :delete, "/users/1", {}
+    expect(page).to_not have_content("User Deleted!")
+    expect(page).to have_content("That user doesn't belong to you!")
+  end
 end

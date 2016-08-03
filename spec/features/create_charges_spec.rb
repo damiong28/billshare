@@ -21,6 +21,8 @@ feature 'Creating a new charge' do
     expect(page).to have_content('testuser')
     expect(page).to have_content('$20.01')
     expect(page).to have_content('2.1 GB')
+    expect(page).to have_content('21.0%')
+    expect(page).to have_content('$8.40')
   end
   
   scenario "must sign in to create charge" do

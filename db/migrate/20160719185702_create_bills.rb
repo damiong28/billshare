@@ -6,7 +6,6 @@ class CreateBills < ActiveRecord::Migration
       t.float :total_data
       t.decimal :data_cost, scale: 2, precision: 6
       t.references :account, index: true, foreign_key: true, :null => false
-      t.float :data_overage
 
       t.timestamps null: false
     end
