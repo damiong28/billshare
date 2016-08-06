@@ -1,12 +1,12 @@
 require 'rails_helper.rb'
 
-feature 'Creating a new charge' do
+feature 'Creating a new charge:' do
 
   background do
     account = create(:account)
     sign_in_with account
-    user = create(:user)
-    bill = create(:bill)
+    create(:user)
+    create(:bill)
   end
   
   scenario 'can create a new charge via the index page' do
@@ -56,7 +56,7 @@ feature 'Creating a new charge' do
   
   scenario "restrict access to account owner" do
     other_account = create(:account, email: "bar@foo.com", id: 2)
-    charge = create(:charge)
+    create(:charge)
     click_link 'Logout'
     sign_in_with other_account
     visit '/'

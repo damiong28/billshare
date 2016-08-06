@@ -11,6 +11,7 @@ class Charge < ActiveRecord::Base
   
   #attr_accessor :data_share, :data_percentage, :personal_total
   before_create :calculate_data_percentage, :calculate_data_share, :calculate_personal_total
+  before_update :calculate_data_percentage, :calculate_data_share, :calculate_personal_total
   
   validates :user_id, presence: true
   validates :surcharges, presence: true, :numericality => { :greater_than_or_equal_to => 0 }

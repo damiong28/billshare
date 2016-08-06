@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
    before_action :authenticate_account!
-   before_action :correct_account, only: [:edit, :destroy, :update]
+   before_action :correct_account, only: [:edit, :destroy, :update, :mark_paid]
   
   def new
     @charge = Charge.new
@@ -17,11 +17,11 @@ class ChargesController < ApplicationController
   end
   
   def edit
-    @charge = Charge.find_by(:bill_id == params[:bill_id], :id == params[:id])
+    @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
   end
   
   def update
-    @charge = Charge.find_by(:bill_id == params[:bill_id], :id == params[:id])
+    @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
     if @charge.update_attributes(charge_params)
         flash[:success] = "Charge updated!"
         redirect_to bill_url(params[:bill_id])
@@ -31,7 +31,7 @@ class ChargesController < ApplicationController
   end
   
   def destroy
-    @charge = Charge.find_by(:bill_id == params[:bill_id], :id == params[:id])
+    @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
     @charge.destroy
     flash[:success] = "Charge deleted"
     redirect_to bill_url(params[:bill_id])

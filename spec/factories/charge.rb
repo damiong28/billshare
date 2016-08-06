@@ -1,8 +1,8 @@
 FactoryGirl.define do
   
   factory :charge do
-    surcharges 50.00
-    data_used 40.00
+    surcharges 60.00
+    data_used 10.00
     account_id 1
     bill_id 1
     user_id 1

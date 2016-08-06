@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
       <h1 class="text-center">Bill Creator</h1>
       <%= link_to "Edit Bill Header", edit_bill_url(params[:id]), 
           class: "btn btn-primary" %>
@@ -26,21 +26,47 @@
         </tbody>
       </table>
       <%= link_to "Add User Charge", new_bill_charge_url(params[:id]), class: "btn btn-primary" %>
-      <table class="table table-hover">
+      <br><br>
+      <table class="table table-bordered table-striped">
         <thead>
           <tr class="text-center">
             <th>User</th>
-            <th>Surcharges</th>
             <th>Data Used</th>
             <th>% of Data</th>
             <th>Share of Data Fee</th>
+            <th>Surcharges</th>
             <th>User Total</th>
             <th>Paid</th>
           </tr>
         </thead>
         <tbody>
-          <%= render @charges %>
+          <%= render @charges, selector: "long" %>
+          <tr>
+            <th>Totals</th>
+            <td class=<%= get_class(data_subtotal(@charges), @bill.total_data) %>>
+              <%= data_subtotal(@charges) %> GB
+            </td>
+            <td class=<%= get_class(percent_total(@charges), 100.0) %>>
+              <%= percent_total(@charges) %>%
+            </td>
+            <td class=<%= get_class(data_share_total(@charges), @bill.data_cost)%>>
+              <%= number_to_currency(data_share_total(@charges)) %>
+            </td>
+            <td><%= number_to_currency(surcharges_total(@charges)) %></td>
+            <td class=<%= get_class(bill_subtotal(@charges), @bill.bill_amount) %>><%= number_to_currency(bill_subtotal(@charges)) %></td>
+            <td class="text-center">-</td>
+          </tr>
         </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="pull-right">Balance</th>
+          </tr>
+          </thead>
+          <tbody>
+            <td class="pull-right"><%= number_to_currency(bill_balance(@charges)) %></td>
+          </tbody>
       </table>
     </div>
   </div>
