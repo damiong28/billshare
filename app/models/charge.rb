@@ -9,9 +9,11 @@ class Charge < ActiveRecord::Base
   #t.decimal :personal_total, precision: 6, scale: 2
   #t.boolean :paid
   
-  #attr_accessor :data_share, :data_percentage, :personal_total
-  before_create :calculate_data_percentage, :calculate_data_share, :calculate_personal_total
-  before_update :calculate_data_percentage, :calculate_data_share, :calculate_personal_total
+  before_create :calculate_data_percentage, :calculate_data_share, 
+  :calculate_personal_total
+  
+  before_update :calculate_data_percentage, :calculate_data_share, 
+  :calculate_personal_total
   
   validates :user_id, presence: true
   validates :surcharges, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
@@ -34,4 +36,5 @@ class Charge < ActiveRecord::Base
     def calculate_personal_total
       self.personal_total = data_share.to_d + surcharges.to_d
     end
+    
 end

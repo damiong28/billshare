@@ -1,5 +1,5 @@
 <tr>
   <td><%= link_to user.name, user_url(user.id) %></td>
-  <td><%= number_to_currency(user.balance) %></td>
+  <td><%= number_to_currency(get_user_balance(user.charges)) %></td>
   <td><%= user.email %></td>
 </tr>

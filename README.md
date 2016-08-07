@@ -1,24 +1,17 @@
+BillShare is my first personal rails app! It was designed to replace using a
+spreadsheet to split up my phone bill.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+In essence it is a CRM. After signing up you can create bills and charges, track 
+balances, mark charges as paid, and email your plan members so they know what to 
+pay. Reviewing past bills is easy with individualized graphs on the member pages 
+and the homepage.
 
+* Ruby version: 2.3.0p0
 
-Welcome to your Rails project on Cloud9 IDE!
+* System dependencies: Bootstrap
 
-To get started, just do the following:
+* Database creation rake db:migrate
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://billshare-necrostic.c9users.io/).
+* Database initialization: No fixtures, manual entry only
 
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+* How to run the test suite: rspec

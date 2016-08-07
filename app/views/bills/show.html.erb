@@ -65,7 +65,9 @@
           </tr>
           </thead>
           <tbody>
-            <td class="pull-right"><%= number_to_currency(bill_balance(@charges)) %></td>
+            <td class="pull-right", id="bill-balance" >
+              <%= number_to_currency(bill_balance(@charges)) %>
+            </td>
           </tbody>
       </table>
     </div>
