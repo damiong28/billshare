@@ -1,0 +1,19 @@
+Hi there, <%= @user.name %>!
+
+Here is the breakdown from the <%= @charge.date %> phone bill.
+
+Data Used:           <%= @charge.data_used %>GB
+Percentage of Total: <%= @charge.data_percentage * 100 %>%
+
+Share of Data Bill:  <%=number_to_currency(@charge.data.share) %>
+Surcharges:          <%=number_to_currency(@charge.surcharges) %>
+______________________________________________________________
+Total Due:           <%= number_to_currency(@charge.personal_total) %>
+
+<% if @user.message.exists? %>
+<%= @user.message %>
+<% else %>
+Thanks and have a great day!
+<% end %>
+
+Sent with BillShare

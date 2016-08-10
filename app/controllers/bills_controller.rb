@@ -49,6 +49,13 @@ class BillsController < ApplicationController
     redirect_to bills_url
   end
   
+  def send_bill
+    @bill = Bill.find(params[:id])
+    BillMailer.mail_bill(@bill).deliver_later
+    flash[:success] = "Bill sent!"
+    redirect_to root_path_url
+  end
+  
   private
     
     def bill_params

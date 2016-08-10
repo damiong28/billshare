@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721171701) do
+ActiveRecord::Schema.define(version: 20160807162858) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,15 +55,16 @@ ActiveRecord::Schema.define(version: 20160721171701) do
   create_table "charges", force: :cascade do |t|
     t.integer  "bill_id"
     t.integer  "user_id"
-    t.integer  "account_id",                              null: false
+    t.integer  "account_id",                                              null: false
     t.decimal  "surcharges",      precision: 6, scale: 2
     t.decimal  "data_used",       precision: 6, scale: 3
     t.decimal  "data_percentage", precision: 4, scale: 2
     t.decimal  "data_share",      precision: 6, scale: 2
     t.decimal  "personal_total",  precision: 6, scale: 2
     t.boolean  "paid"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.boolean  "sent",                                    default: false
   end
 
   add_index "charges", ["account_id"], name: "index_charges_on_account_id"

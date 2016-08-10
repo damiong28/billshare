@@ -33,10 +33,10 @@
             <th>User</th>
             <th>Data Used</th>
             <th>% of Data</th>
-            <th>Share of Data Fee</th>
+            <th>Data Fee</th>
             <th>Surcharges</th>
             <th>User Total</th>
-            <th>Paid</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -58,10 +58,15 @@
           </tr>
         </tbody>
       </table>
-      <table class="table">
+      <table class='table borderless'>
         <thead>
           <tr>
             <th class="pull-right">Balance</th>
+            <th class="pull-left">
+              <%= link_to "Send Bill", send_bill_url, 
+                class: "btn btn-primary", 
+                data: { confirm: "Ready to send?" } %>
+            </td>
           </tr>
           </thead>
           <tbody>

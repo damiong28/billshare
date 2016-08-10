@@ -82,3 +82,7 @@
     color: $state-danger-text;
   }
  }
+ 
+ .borderless td, .borderless th {
+   border: none !important;
+ }

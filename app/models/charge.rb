@@ -26,7 +26,7 @@ class Charge < ActiveRecord::Base
   private
   
     def calculate_data_percentage
-      self.data_percentage = data_used.to_d / Bill.find(bill_id).total_data.to_d
+      self.data_percentage = data_used / Bill.find(bill_id).total_data.to_d
     end
     
     def calculate_data_share

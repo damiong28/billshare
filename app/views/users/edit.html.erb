@@ -7,19 +7,15 @@
         <%= render 'shared/form_errors', item: @user %>
         <div class="form-group">
           <%= f.label :name %>
-          <%= f.text_field :name, placeholder: "Name",
-            class: "form-control" %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.text_field :email, placeholder: "Email", 
-            class: "form-control" %>
+          <%= f.text_field :email, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :message, "Custom email message" %>
-          <%= f.text_area :message, 
-              placeholder: "Custom message to be included in email (optional)",
-              class: "form-control" %>        
+          <%= f.label :message, "Custom email signature (optional)" %>
+          <%= f.text_area :message, class: "form-control" %>        
         </div>
         <%= f.submit class: 'btn btn-success' %>
       <% end %>
