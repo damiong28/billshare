@@ -7,7 +7,7 @@
         <%= render 'shared/form_errors', item: @bill %>
         <div class="form-group">
           <%= f.label "Date from Bill:" %>
-          <%= f.date_select(:bill_date) %>
+          <%= f.date_select(:bill_date, discard_day: true) %>
         </div>
         <div class="form-group">
           <%= f.label "Total amount of Bill:" %>

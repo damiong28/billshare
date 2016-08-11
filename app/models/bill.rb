@@ -10,5 +10,5 @@ class Bill < ActiveRecord::Base
   validates :data_cost, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   
   belongs_to :account
-  has_many :charges
+  has_many :charges, dependent: :destroy
 end

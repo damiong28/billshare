@@ -47,4 +47,15 @@ feature 'Deleting a bill:' do
     expect(page).to have_content("That bill doesn't belong to you!")
   end
   
+  scenario "charges are deleted when bill is deleted" do
+    create(:user)
+    create(:charge)
+    visit '/bills/1'
+    click_link 'Delete Bill'
+    expect(page).to have_content("Bill deleted!")
+    visit '/users/1'
+    expect(page).to_not have_content("$60.00")
+    expect(page).to have_content("You haven't entered any charges for this user yet.")
+  end
+  
 end 

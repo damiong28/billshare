@@ -44,4 +44,15 @@ feature 'Deleting a user:' do
     expect(page).to_not have_content("User Deleted!")
     expect(page).to have_content("That user doesn't belong to you!")
   end
+  
+  scenario "charges are deleted when user is deleted" do
+    create(:bill)
+    create(:charge)
+    visit '/users/1'
+    click_link 'Delete User'
+    expect(page).to have_content("User deleted.")
+    visit '/bills/1'
+    expect(page).to_not have_content("$60.00")
+    expect(page).to have_content("0 GB")
+  end
 end
