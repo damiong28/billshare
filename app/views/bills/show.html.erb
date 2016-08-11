@@ -47,20 +47,20 @@
           <%= render @charges, selector: "long" %>
           <tr>
             <th>Totals</th>
-            <td class=<%= get_class(data_subtotal(@charges), @bill.total_data) %>>
-              <%= data_subtotal(@charges) %> GB
+            <td class=<%= get_class(@data_subtotal, @bill.total_data) %>>
+              <%= @data_subtotal %> GB
             </td>
-            <td class=<%= get_class(percent_total(@charges), 100.0) %>>
-              <%= percent_total(@charges) %>%
+            <td class=<%= get_class(@percent_total, 100.0) %>>
+              <%= @percent_total %>%
             </td>
-            <td class=<%= get_class(data_share_total(@charges), @bill.data_cost)%>>
-              <%= number_to_currency(data_share_total(@charges)) %>
+            <td class=<%= get_class(@data_share_total, @bill.data_cost)%>>
+              <%= number_to_currency(@data_share_total) %>
             </td>
-            <td class=<%= get_class(surcharges_total(@charges), @bill.bill_amount - @bill.data_cost) %>>
-              <%= number_to_currency(surcharges_total(@charges)) %>
+            <td class=<%= get_class(@surcharges_total, @bill.bill_amount - @bill.data_cost) %>>
+              <%= number_to_currency(@surcharges_total) %>
             </td>
-            <td class=<%= get_class(bill_subtotal(@charges), @bill.bill_amount) %>>
-              <%= number_to_currency(bill_subtotal(@charges)) %></td>
+            <td class=<%= get_class(@bill_subtotal, @bill.bill_amount) %>>
+              <%= number_to_currency(@bill_subtotal) %></td>
             <td class="text-center">-</td>
           </tr>
         </tbody>
