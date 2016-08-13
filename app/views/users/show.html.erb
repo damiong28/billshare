@@ -10,6 +10,7 @@
               data: { confirm: "Delete #{@user.name}?" } %>
           
           <% if @user.charges.present? %>
+            <%= user_charge_chart %>
             <table class="table table-striped">
               <thead>
                 <tr class="text-center">
@@ -20,7 +21,7 @@
                 </tr>
               </thead>
               <tbody>
-                <%= render @user.charges, selector: "short" %>
+                <%= render @charges, selector: "short" %>
               </tbody>
             </table>
           <% else %>

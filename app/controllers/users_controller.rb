@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   
   def show
     @user=User.find(params[:id])
+    @charges = @user.charges.order(date: :desc)
   end
   
   def edit
@@ -48,8 +49,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :message, :account_id, 
-                    :balance)
+      params.require(:user).permit(:name, :email, :message, :account_id)
     end
     
     def correct_account

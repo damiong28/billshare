@@ -1,6 +1,6 @@
 <tr>
   <% if selector == "short" %>
-    <td><%= link_to Bill.find(charge.bill_id).bill_date, Bill.find(charge.bill_id) %></td>
+    <td><%= link_to charge.date.strftime("%B %Y"), Bill.find(charge.bill_id) %></td>
     <td><%= charge.data_used %> GB</td>
     <td><%= number_to_currency(charge.personal_total) %></td>
     <td><%= paid_boolean(charge) %></td>

@@ -10,8 +10,12 @@ and the homepage.
 
 * System dependencies: Bootstrap
 
-* Database creation rake db:migrate
+After you have the repository cloned, run "bundle install" to install the gemfile.
 
-* Database initialization: No fixtures, manual entry only
+Then you can create and seed the database by running "rake db:create", 
+  "rake db:migrate", "rake db:seed". This will create an account you can use to
+  login right away and view the sample data. Fire up your local server and login!
+  
+  The login is "user@example.com" and the password is "password".
 
 * How to run the test suite: rspec

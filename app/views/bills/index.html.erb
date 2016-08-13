@@ -3,6 +3,9 @@
       <div class="row">
           <div class="col-md-6 col-md-offset-3">
               <h1 class="text-center">Bills Dashboard</h1>
+              <% if @bills.present? %>
+                <%= bill_total_by_month %>
+              <% end %>
               <%= link_to "New Bill", new_bill_url, class: "btn btn-primary" %>
               <% if @bills.present? %>
                 <table class="table table-striped">

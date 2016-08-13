@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="text-center">Bill Creator</h1>
+      <h1 class="text-center"><%= @bill.date.strftime("%B %Y") %> Bill</h1>
       <%= link_to "Edit Bill Header", edit_bill_url(params[:id]), 
           class: "btn btn-primary" %>
       <%= link_to "Delete Bill", bill_path(params[:id]), method: :delete, 
@@ -19,10 +19,10 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @bill.bill_date.strftime("%B %Y") %></td>
+            <td><%= @bill.date.strftime("%B %Y") %></td>
             <td><%= @bill.total_data %> GB</td>
             <td><%= number_to_currency(@bill.data_cost) %></td>
-            <td><%= number_to_currency(@bill.bill_amount) %></td>
+            <td><%= number_to_currency(@bill.amount) %></td>
             <td id="bill-balance">
               <%= number_to_currency(bill_balance(@charges)) %>
             </td>
@@ -56,10 +56,10 @@
             <td class=<%= get_class(@data_share_total, @bill.data_cost)%>>
               <%= number_to_currency(@data_share_total) %>
             </td>
-            <td class=<%= get_class(@surcharges_total, @bill.bill_amount - @bill.data_cost) %>>
+            <td class=<%= get_class(@surcharges_total, @bill.amount - @bill.data_cost) %>>
               <%= number_to_currency(@surcharges_total) %>
             </td>
-            <td class=<%= get_class(@bill_subtotal, @bill.bill_amount) %>>
+            <td class=<%= get_class(@bill_subtotal, @bill.amount) %>>
               <%= number_to_currency(@bill_subtotal) %></td>
             <td class="text-center">-</td>
           </tr>

@@ -7,7 +7,7 @@ class BillMailer < ApplicationMailer
       @charge = charge
       @user = User.find(charge.user_id)
       @bill = Bill.find(charge.bill_id)
-      mail(to: @user.email, subject: "#{@bill.bill_date} Phone Bill")
+      mail(to: @user.email, subject: "#{@bill.date} Phone Bill")
     end
   end
   
@@ -15,6 +15,6 @@ class BillMailer < ApplicationMailer
     @charge = charge
     @user = User.find(charge.user_id)
     @bill = Bill.find(charge.bill_id)
-    mail(to: @user.email, subject: "#{@bill.bill_date} Phone Bill")
+    mail(to: @user.email, subject: "#{@bill.date} Phone Bill")
   end
 end

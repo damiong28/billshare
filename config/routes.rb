@@ -9,4 +9,11 @@ Rails.application.routes.draw do
   end
   get 'bills/:id/send', to: 'bills#send_bill', as: :send_bill
   
+  resources :charts, only: [] do
+    collection do
+      get 'bill_total_by_month'
+      get 'user_charge_chart'
+    end
+  end
+  
 end

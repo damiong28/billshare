@@ -19,7 +19,7 @@
       </thead>
       <tbody>
         <td style="border: 1px solid black; padding: 5px; text-align: right;">
-          <%= @bill.bill_date %>
+          <%= @bill.date %>
         </td>
         <td style="border: 1px solid black; padding: 5px; text-align: right;">
           <%= @bill.total_data %> GB
@@ -28,7 +28,7 @@
           <%= number_to_currency(@bill.data_cost) %>
         </td>
         <td style="border: 1px solid black; padding: 5px; text-align: right;">
-          <%= number_to_currency(@bill.bill_amount) %>
+          <%= number_to_currency(@bill.amount) %>
         </td>
       </tbody>
     </table><br>

@@ -6,7 +6,7 @@ class BillsController < ApplicationController
     
   def index
     if account_signed_in?
-      @bills = Bill.where(:account_id => current_account.id)
+      @bills = Bill.where(:account_id => current_account.id).order(date: :desc)
     end
   end
   
@@ -64,7 +64,7 @@ class BillsController < ApplicationController
   private
     
     def bill_params
-      params.require(:bill).permit(:bill_date, :bill_amount, :total_data, 
+      params.require(:bill).permit(:date, :amount, :total_data, 
         :data_cost, :account_id, :data_overage)
     end
     

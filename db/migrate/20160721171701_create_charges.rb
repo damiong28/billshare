@@ -10,6 +10,7 @@ class CreateCharges < ActiveRecord::Migration
       t.decimal :data_share, precision: 6, scale: 2
       t.decimal :personal_total, precision: 6, scale: 2
       t.boolean :paid
+      t.date :date
       
       t.timestamps null: false
     end

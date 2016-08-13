@@ -8,12 +8,13 @@ class Charge < ActiveRecord::Base
   #t.decimal :data_share, precision: 6, scale: 2
   #t.decimal :personal_total, precision: 6, scale: 2
   #t.boolean :paid
+  #t.date :date
   
-  before_create :calculate_data_percentage, :calculate_data_share, 
-  :calculate_personal_total
+  before_create :get_data_percentage, :get_data_share, :get_personal_total,
+    :get_date
   
-  before_update :calculate_data_percentage, :calculate_data_share, 
-  :calculate_personal_total
+  before_update :get_data_percentage, :get_data_share, :get_personal_total,
+    :get_date
   
   validates :user_id, presence: true
   validates :surcharges, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
@@ -25,16 +26,20 @@ class Charge < ActiveRecord::Base
   
   private
   
-    def calculate_data_percentage
+    def get_data_percentage
       self.data_percentage = data_used / Bill.find(bill_id).total_data.to_d
     end
     
-    def calculate_data_share
+    def get_data_share
       self.data_share = data_percentage.to_d * Bill.find(bill_id).data_cost.to_d
     end
     
-    def calculate_personal_total
+    def get_personal_total
       self.personal_total = data_share.to_d + surcharges.to_d
+    end
+    
+    def get_date
+      self.date = Bill.find(bill_id).date
     end
     
 end

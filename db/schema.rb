@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807162858) do
+ActiveRecord::Schema.define(version: 20160721171701) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -41,13 +41,13 @@ ActiveRecord::Schema.define(version: 20160807162858) do
   add_index "accounts", ["unlock_token"], name: "index_accounts_on_unlock_token", unique: true
 
   create_table "bills", force: :cascade do |t|
-    t.date     "bill_date"
-    t.decimal  "bill_amount", precision: 6, scale: 2
+    t.date     "date"
+    t.decimal  "amount",     precision: 6, scale: 2
     t.float    "total_data"
-    t.decimal  "data_cost",   precision: 6, scale: 2
-    t.integer  "account_id",                          null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "data_cost",  precision: 6, scale: 2
+    t.integer  "account_id",                         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "bills", ["account_id"], name: "index_bills_on_account_id"
@@ -55,16 +55,16 @@ ActiveRecord::Schema.define(version: 20160807162858) do
   create_table "charges", force: :cascade do |t|
     t.integer  "bill_id"
     t.integer  "user_id"
-    t.integer  "account_id",                                              null: false
+    t.integer  "account_id",                              null: false
     t.decimal  "surcharges",      precision: 6, scale: 2
     t.decimal  "data_used",       precision: 6, scale: 3
     t.decimal  "data_percentage", precision: 4, scale: 2
     t.decimal  "data_share",      precision: 6, scale: 2
     t.decimal  "personal_total",  precision: 6, scale: 2
     t.boolean  "paid"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
-    t.boolean  "sent",                                    default: false
+    t.date     "date"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "charges", ["account_id"], name: "index_charges_on_account_id"
@@ -76,9 +76,8 @@ ActiveRecord::Schema.define(version: 20160807162858) do
     t.string   "email"
     t.integer  "account_id"
     t.text     "message"
-    t.decimal  "balance",    precision: 6, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "users", ["account_id"], name: "index_users_on_account_id"
