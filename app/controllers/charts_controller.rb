@@ -12,4 +12,9 @@ class ChartsController < ApplicationController
     render json: [{name: 'Charge Amount', data: result}]
   end
   
+  def user_balance_chart
+    @users = User.where(:account_id => current_account.id)
+    result = @users.pluck(:name, :balance)
+    render json: [{name: 'User Balance', data: result}]
+  end
 end

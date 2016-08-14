@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       get 'bill_total_by_month'
       get 'user_charge_chart'
+      get 'user_balance_chart'
     end
   end
   

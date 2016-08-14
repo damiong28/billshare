@@ -3,6 +3,6 @@
   <td><%= bill.total_data %> GB</td>
   <td><%= number_to_currency(bill.amount) %></td>
   <td id="bill-balance-<%= bill.id %>">
-    <%= number_to_currency(bill_balance(bill.charges)) %>
+    <%= number_to_currency(bill.balance) %>
   </td>
 </tr>

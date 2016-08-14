@@ -13,12 +13,12 @@ Account.create!(email: "user@example.com",
     id: y+1)
 end
 
-100.times do |n|
+10.times do |n|
   Bill.create!(
     amount: Faker::Number.decimal(3,2),
     total_data: Faker::Number.decimal(2,3),
     data_cost: Faker::Number.decimal(2,2),
-    date: Faker::Date.between(1.year.ago, Date.today),
+    date: Faker::Date.between(1.year.ago, 1.year.from_now),
     id: n+1,
     account_id: 1)
   10.times do |x|

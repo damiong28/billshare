@@ -12,10 +12,13 @@ class Charge < ActiveRecord::Base
   
   before_create :get_data_percentage, :get_data_share, :get_personal_total,
     :get_date
+  after_create :set_user_balance, :set_bill_balance
+    
   
   before_update :get_data_percentage, :get_data_share, :get_personal_total,
     :get_date
-  
+  after_update :set_user_balance, :set_bill_balance
+    
   validates :user_id, presence: true
   validates :surcharges, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   validates :data_used, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
@@ -27,11 +30,11 @@ class Charge < ActiveRecord::Base
   private
   
     def get_data_percentage
-      self.data_percentage = data_used / Bill.find(bill_id).total_data.to_d
+      self.data_percentage = data_used / bill.total_data.to_d
     end
     
     def get_data_share
-      self.data_share = data_percentage.to_d * Bill.find(bill_id).data_cost.to_d
+      self.data_share = data_percentage.to_d * bill.data_cost.to_d
     end
     
     def get_personal_total
@@ -39,7 +42,26 @@ class Charge < ActiveRecord::Base
     end
     
     def get_date
-      self.date = Bill.find(bill_id).date
+      self.date = bill.date
     end
     
+    def set_user_balance
+      balance = 0.00
+      user.charges.each do |charge|
+        unless charge.paid
+          balance += charge.personal_total
+        end
+      end
+      user.update_attributes(:balance => balance)
+    end
+    
+    def set_bill_balance
+      balance = 0.00
+      bill.charges.each do |charge|
+        unless charge.paid
+          balance += charge.personal_total
+        end
+      end
+      bill.update_attributes(:balance => balance)
+    end
 end

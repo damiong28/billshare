@@ -9,7 +9,7 @@ class CreateCharges < ActiveRecord::Migration
       t.decimal :data_percentage, precision: 4, scale: 2
       t.decimal :data_share, precision: 6, scale: 2
       t.decimal :personal_total, precision: 6, scale: 2
-      t.boolean :paid
+      t.boolean :paid, null:false, default: false
       t.date :date
       
       t.timestamps null: false

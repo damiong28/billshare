@@ -24,7 +24,7 @@
             <td><%= number_to_currency(@bill.data_cost) %></td>
             <td><%= number_to_currency(@bill.amount) %></td>
             <td id="bill-balance">
-              <%= number_to_currency(bill_balance(@charges)) %>
+              <%= number_to_currency(@bill.balance) %>
             </td>
           </tr>
         </tbody>

@@ -12,7 +12,7 @@ feature 'Pay a charge:' do
   
   scenario "paying a charge will update user balance" do
     visit '/users'
-    expect(page).to have_content("$100.00")
+    expect(page).to have_content("$100.00"), 'new charge not setting balance'
     visit '/bills/1'
     click_link 'unpaid'
     expect(page).to have_content("Charge updated!")
