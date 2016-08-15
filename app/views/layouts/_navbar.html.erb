@@ -14,13 +14,13 @@
       <% if account_signed_in? %>
         <ul class="nav navbar-nav">
           <li><%= link_to "Users", users_url %></li>
-          <li><a href="#">Reports</a></li>
+          <li><%= link_to "Reports", reports_path %></li>
         </ul>
       <% end %>
       
       <ul class="nav navbar-nav navbar-right">
         <% if account_signed_in? %>
-          <li><a href="#">Settings</a></li>
+          <li><%= link_to "Settings", settings_path %></li>
           <li><%= link_to "Logout", destroy_account_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Register", new_account_registration_url %></li>
