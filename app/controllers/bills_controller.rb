@@ -7,6 +7,7 @@ class BillsController < ApplicationController
   def index
     if account_signed_in?
       @bills = Bill.where(:account_id => current_account.id).order(date: :desc)
+      @users = User.where(:account_id => current_account.id)
     end
   end
   

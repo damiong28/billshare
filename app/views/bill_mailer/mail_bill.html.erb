@@ -19,7 +19,7 @@
       </thead>
       <tbody>
         <td style="border: 1px solid black; padding: 5px; text-align: right;">
-          <%= @bill.date %>
+          <%= @bill.date.strftime( "%b %Y") %>
         </td>
         <td style="border: 1px solid black; padding: 5px; text-align: right;">
           <%= @bill.total_data %> GB
@@ -57,7 +57,7 @@
             <%= number_to_currency(@charge.surcharges) %>
           </td>
           <td style="border: 1px solid black; padding: 5px; text-align: right;">
-            <%= number_to_currency(@charge.personal_total) %>
+            <b><%= number_to_currency(@charge.personal_total) %></b>
           </td>
         </tr>
       </tbody>

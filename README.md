@@ -1,14 +1,19 @@
 BillShare is my first personal rails app! It was designed to replace using a
 spreadsheet to split up my phone bill.
 
-In essence it is a CRM. After signing up you can create bills and charges, track 
-balances, mark charges as paid, and email your plan members so they know what to 
-pay. Reviewing past bills is easy with individualized graphs on the member pages 
-and the homepage.
+View it live on the web at necro-billshare.herokuapp.com. It may take a moment 
+to load the first time but the wait is well worth it!
+
+In essence, BillShare is a CRM. After signing up you can create bills and 
+charges, track balances, mark charges as paid, and email your plan members so 
+they know what to pay. Reviewing past bills is easy with individualized graphs 
+on the member pages and the homepage.
 
 * Ruby version: 2.3.0p0
 
 * System dependencies: Bootstrap
+
+* How to run the test suite: rspec
 
 After you have the repository cloned, run "bundle install" to install the gemfile.
 
@@ -18,4 +23,5 @@ Then you can create and seed the database by running "rake db:create",
   
   The login is "user@example.com" and the password is "password".
 
-* How to run the test suite: rspec
+Thanks for stopping by! This is a work in progress, I work on it everyday and 
+new features are added/refactored constantly! 

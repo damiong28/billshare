@@ -1,5 +1,5 @@
 class BillMailer < ApplicationMailer
-  default from: "notifications@billshare.herokuapp.com"
+  default from: "BillShare@billshare.herokuapp.com"
   layout 'mailer'
   
   def mail_bill(bill)

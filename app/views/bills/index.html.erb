@@ -22,7 +22,11 @@
                   </tbody>
                 </table>
               <% else %>
-                <p><br/>You haven't created any bills yet.</p>
+                <p><br>You haven't created any bills yet.</p>
+              <% end %>
+              <% unless @users.present? %>
+                <br>
+                <p>Get started by adding your plan members on the Users tab at the top.</p>
               <% end %>
           </div>
       </div>

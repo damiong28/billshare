@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :charges
   end
   get 'bills/:id/send', to: 'bills#send_bill', as: :send_bill
+  get 'settings', to: 'accounts#settings', as: :settings
+  get 'reports', to: 'accounts#reports', as: :reports
   
   resources :charts, only: [] do
     collection do
