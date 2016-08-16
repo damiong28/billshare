@@ -13,7 +13,7 @@ feature 'Edit a charge:' do
   scenario 'can edit a charge via the bill show page' do
     visit 'bills/1'
     expect(page).to have_content("$100.00")
-    click_link "testuser"
+    click_link "edit-charge-1"
     select 'testuser', from: 'charge_user_id', visible: false
     fill_in 'charge_surcharges', with: '30'
     fill_in 'charge_data_used', with: '5'

@@ -1,11 +1,11 @@
 <tr>
   <% if selector == "short" %>
-    <td><%= link_to charge.date.strftime("%B %Y"), Bill.find(charge.bill_id) %></td>
+    <td><%= link_to charge.date.strftime("%B %Y"), charge.bill %></td>
     <td><%= charge.data_used %> GB</td>
     <td><%= number_to_currency(charge.personal_total) %></td>
     <td><%= paid_boolean(charge) %></td>
   <% else %>
-    <td><%= link_to User.find(charge.user_id).name, edit_bill_charge_url(bill_id: params[:id], id: charge.id) %></td>
+    <td><%= link_to charge.user.name, charge.user %></td>
     <td><%= charge.data_used %> GB</td>
     <td><%= charge.data_percentage * 100 %>%</td>
     <td><%= number_to_currency(charge.data_share) %></td>
@@ -14,5 +14,7 @@
     <td><%= link_to paid_boolean(charge), 
       bill_charge_path(charge: { :paid => !charge.paid }, bill_id: charge.bill_id, id: charge.id ), 
       method: :patch %></td>
+      <td class="text-center"><%= link_to "", edit_bill_charge_url(bill_id: params[:id], id: charge.id),
+        class: "glyphicon glyphicon-cog", id: "edit-charge-#{charge.id}" %></td>
   <% end %>
 </tr>
