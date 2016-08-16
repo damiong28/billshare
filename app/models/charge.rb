@@ -12,12 +12,13 @@ class Charge < ActiveRecord::Base
   
   before_create :get_data_percentage, :get_data_share, :get_personal_total,
     :get_date
-  after_create :set_user_balance, :set_bill_balance
-    
+  after_create :set_user_balance, :update_bill
   
   before_update :get_data_percentage, :get_data_share, :get_personal_total,
     :get_date
-  after_update :set_user_balance, :set_bill_balance
+  after_update :set_user_balance, :update_bill
+  
+  after_destroy :update_bill
     
   validates :user_id, presence: true
   validates :surcharges, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
@@ -55,13 +56,23 @@ class Charge < ActiveRecord::Base
       user.update_attributes(:balance => balance)
     end
     
-    def set_bill_balance
-      balance = 0.00
+    def update_bill
+      balance = data_subtotal = percent_total = data_share_total = 
+      surcharges_total = subtotal = 0.0
       bill.charges.each do |charge|
+        data_subtotal += charge.data_used
+        percent_total += charge.data_percentage
+        data_share_total += charge.data_share
+        surcharges_total += charge.surcharges
+        subtotal += charge.personal_total
         unless charge.paid
           balance += charge.personal_total
         end
       end
-      bill.update_attributes(:balance => balance)
+      percent_total *= 100
+      bill.update_attributes(
+        :balance => balance, :data_subtotal => data_subtotal,
+        :percent_total => percent_total, :data_share_total => data_share_total,
+        :surcharges_total => surcharges_total, :subtotal => subtotal)
     end
 end

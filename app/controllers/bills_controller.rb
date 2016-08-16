@@ -27,11 +27,6 @@ class BillsController < ApplicationController
   def show
     @bill = Bill.find(params[:id])
     @charges = @bill.charges
-    @data_subtotal = data_subtotal(@charges)
-    @percent_total = percent_total(@charges)
-    @data_share_total = data_share_total(@charges)
-    @surcharges_total = surcharges_total(@charges)
-    @bill_subtotal = bill_subtotal(@charges)
   end
   
   def edit
@@ -75,45 +70,5 @@ class BillsController < ApplicationController
           flash[:danger]="That bill doesn't belong to you!"
           redirect_to root_path_url
       end
-    end
-    
-    def data_subtotal(charges)
-      data = 0
-      charges.each do |charge|
-        data += charge.data_used
-      end
-      data
-    end
-    
-    def percent_total(charges)
-      total = 0
-      charges.each do |charge|
-        total += charge.data_percentage
-      end
-      total * 100
-    end
-    
-    def data_share_total(charges)
-      total = 0
-      charges.each do |charge|
-        total += charge.data_share
-      end
-      total
-    end
-    
-    def surcharges_total(charges)
-      total = 0
-      charges.each do |charge|
-        total += charge.surcharges
-      end
-      total
-    end
-    
-    def bill_subtotal(charges)
-      sub = 0
-      charges.each do |charge|
-        sub += charge.personal_total
-      end
-      sub
     end
 end
