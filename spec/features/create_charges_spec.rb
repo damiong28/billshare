@@ -6,7 +6,7 @@ feature 'Creating a new charge:' do
     account = create(:account)
     sign_in_with account
     create(:user)
-    create(:bill)
+    bill = create(:bill)
   end
   
   scenario 'can create a new charge via the index page' do
@@ -64,5 +64,21 @@ feature 'Creating a new charge:' do
     visit '/bills/1/charges/1/edit'
     expect(page).to have_content("That charge doesn't belong to you!")
     expect(page).to_not have_content("Update Charge")
+  end
+  
+  scenario "creating a charge will update bill totals" do
+    visit '/bills/1'
+    expect(find('#data-subtotal')).to have_content("0.0 GB")
+    expect(find('#percent-total')).to have_content("0.0%")
+    expect(find('#data-share-total')).to have_content("$0.00")
+    expect(find("#surcharges-total")).to have_content("$0.00")
+    expect(find("#subtotal")).to have_content("$0.00")
+    create(:charge)
+    visit '/bills/1'
+    expect(find('#data-subtotal')).to have_content("10.0 GB")
+    expect(find('#percent-total')).to have_content("100.0%")
+    expect(find('#data-share-total')).to have_content("$40.00")
+    expect(find("#surcharges-total")).to have_content("$60.00")
+    expect(find("#subtotal")).to have_content("$100.00")
   end
 end 

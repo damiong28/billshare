@@ -6,7 +6,7 @@
   <body>
     <h3>Hi there, <%= @user.name %>!</h3>
     <p>
-      Here is the breakdown from last month's phone bill.<br>
+      Here is the breakdown from the <%= @bill.date.strftime("%B") %> phone bill.<br>
     </p>
     <table style="border: 1px solid black">
       <thead>

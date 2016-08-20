@@ -5,6 +5,7 @@
             <% if @users.present? %>
               <%= user_balance_chart %>
             <% end %>
+            <br><br>
             <%= link_to "New User", new_user_url, class: "btn btn-primary" %>
             <% if @users.present? %>
               <table class="table table-hover">

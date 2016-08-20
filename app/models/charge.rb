@@ -56,23 +56,27 @@ class Charge < ActiveRecord::Base
       user.update_attributes(:balance => balance)
     end
     
-    def update_bill
-      balance = data_subtotal = percent_total = data_share_total = 
-      surcharges_total = subtotal = 0.0
+  def update_bill
+    data_subtotal = percent_total = data_share_total = 
+    surcharges_total = subtotal = 0.0
+    balance = bill.amount
+    if bill.charges.present?
       bill.charges.each do |charge|
         data_subtotal += charge.data_used
         percent_total += charge.data_percentage
         data_share_total += charge.data_share
         surcharges_total += charge.surcharges
         subtotal += charge.personal_total
-        unless charge.paid
-          balance += charge.personal_total
+        if charge.paid
+          balance -= charge.personal_total
         end
       end
       percent_total *= 100
-      bill.update_attributes(
-        :balance => balance, :data_subtotal => data_subtotal,
-        :percent_total => percent_total, :data_share_total => data_share_total,
-        :surcharges_total => surcharges_total, :subtotal => subtotal)
     end
+    bill.update_attributes(
+      :balance => balance, :data_subtotal => data_subtotal,
+      :percent_total => percent_total, :data_share_total => data_share_total,
+      :surcharges_total => surcharges_total, :subtotal => subtotal)
+  end
+    
 end

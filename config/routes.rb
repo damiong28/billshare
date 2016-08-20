@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   root 'bills#index', as: 'root_path'
   
-  devise_for :accounts
+  devise_for :accounts, :controllers => {registrations: 'registrations' }
+  
   resources :users
   resources :bills do
     resources :charges

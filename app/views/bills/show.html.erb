@@ -48,25 +48,32 @@
           <%= render @charges, selector: "long" %>
           <tr>
             <th>Totals</th>
-            <td class=<%= get_class(@bill.data_subtotal, @bill.total_data) %>>
+            <td class=<%= get_class(@bill.data_subtotal, @bill.total_data)%>
+              id="data-subtotal">
               <%= @bill.data_subtotal %> GB
             </td>
-            <td class=<%= get_class(@bill.percent_total, 100.0) %>>
+            <td class=<%= get_class(@bill.percent_total, 100.0) %>
+              id="percent-total">
               <%= @bill.percent_total %>%
             </td>
-            <td class=<%= get_class(@bill.data_share_total, @bill.data_cost)%>>
+            <td class=<%= get_class(@bill.data_share_total, @bill.data_cost)%>
+              id="data-share-total">
               <%= number_to_currency(@bill.data_share_total) %>
             </td>
-            <td class=<%= get_class(@bill.surcharges_total, @bill.amount - @bill.data_cost) %>>
+            <td class=<%= get_class(@bill.surcharges_total, 
+              @bill.amount - @bill.data_cost) %> id="surcharges-total">
               <%= number_to_currency(@bill.surcharges_total) %>
             </td>
-            <td class=<%= get_class(@bill.subtotal, @bill.amount) %>>
+            <td class=<%= get_class(@bill.subtotal, @bill.amount) %>
+              id="subtotal">
               <%= number_to_currency(@bill.subtotal) %></td>
+            <td class="text-center">-</td>
             <td class="text-center">-</td>
           </tr>
         </tbody>
       </table>
-      <%= link_to "Send Bill", send_bill_url, class: "btn btn-primary pull-right", 
+      <%= link_to "Send Bill", send_bill_url, 
+        class: "btn btn-primary pull-right", 
         data: { confirm: "Ready to send?" } %>
     </div>
   </div>

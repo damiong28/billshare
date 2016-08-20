@@ -45,15 +45,15 @@ ActiveRecord::Schema.define(version: 20160721171701) do
     t.decimal  "amount",           precision: 6, scale: 2
     t.decimal  "total_data",       precision: 6, scale: 3
     t.decimal  "data_cost",        precision: 6, scale: 2
-    t.integer  "account_id",                               null: false
+    t.integer  "account_id",                                             null: false
     t.decimal  "balance",          precision: 6, scale: 2
-    t.decimal  "data_subtotal",    precision: 6, scale: 3
-    t.decimal  "percent_total",    precision: 5, scale: 2
-    t.decimal  "data_share_total", precision: 6, scale: 2
-    t.decimal  "surcharges_total", precision: 6, scale: 2
-    t.decimal  "subtotal",         precision: 6, scale: 2
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.decimal  "data_subtotal",    precision: 6, scale: 3, default: 0.0
+    t.decimal  "percent_total",    precision: 5, scale: 2, default: 0.0
+    t.decimal  "data_share_total", precision: 6, scale: 2, default: 0.0
+    t.decimal  "surcharges_total", precision: 6, scale: 2, default: 0.0
+    t.decimal  "subtotal",         precision: 6, scale: 2, default: 0.0
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
   add_index "bills", ["account_id"], name: "index_bills_on_account_id"
