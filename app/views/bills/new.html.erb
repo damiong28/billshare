@@ -4,7 +4,7 @@
     <div class="col-md-6 col-md-offset-3">
       <h1 class="text-center">New Bill</h1>
       <%= form_for @bill do |f| %>
-        <%= render 'shared/form_errors', item: @bill %>
+        <%= render "shared/form_errors", item: @bill %>
         <div class="form-group">
           <%= f.label "Date from Bill:" %>
           <%= f.date_select(:date, discard_day: true) %>
@@ -22,7 +22,7 @@
           <%= f.text_field :data_cost, class: "form-control" %>
         </div>
         <%= f.hidden_field :account_id, :value => current_account.id %>
-        <%= f.submit "Start Bill", class: 'btn btn-success' %>
+        <%= f.submit "Start Bill", class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
