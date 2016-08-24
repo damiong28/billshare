@@ -26,6 +26,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rubocop'
+  gem 'letter_opener'
 end
 
 group :production do
