@@ -12,8 +12,7 @@ feature 'Registering a new account' do
     fill_in 'account_password', with: 'supersecret', match: :first
     fill_in 'account_password_confirmation', with: 'supersecret'
     click_button 'Sign up'
-    expect(page).to have_content('A message with a confirmation link has been 
-      sent to your email address.')
+    expect(page).to have_content('Welcome! You have signed up successfully.')
   end
   
 end 

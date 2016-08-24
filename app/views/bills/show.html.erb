@@ -1,3 +1,4 @@
+<% # bills/show %>
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -29,7 +30,8 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "Add User Charge", new_bill_charge_url(params[:id]), class: "btn btn-primary" %>
+      <%= link_to "Add User Charge", new_bill_charge_url(params[:id]), 
+          class: "btn btn-primary" %>
       <br><br>
       <table class="table table-bordered table-striped">
         <thead>

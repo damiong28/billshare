@@ -52,7 +52,9 @@ class BillsController < ApplicationController
   
   def send_bill
     @bill = Bill.find(params[:id])
-    BillMailer.mail_bill(@bill).deliver_later
+    @bill.charges.each do |charge|
+      BillMailer.mail_bill(@bill, charge).deliver_later
+    end
     flash[:success] = "Bill sent!"
     redirect_to root_path_url
   end
