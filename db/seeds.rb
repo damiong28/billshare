@@ -1,8 +1,7 @@
 Account.create!(email: "user@example.com",
                 password: "password", 
                 password_confirmation: "password",
-                confirmed_at: Time.now,
-                id: 1)
+                confirmed_at: Time.now)
                 
 10.times do |y|
   User.create!(
