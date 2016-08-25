@@ -21,8 +21,10 @@ class Charge < ActiveRecord::Base
   after_destroy :update_bill
     
   validates :user_id, presence: true
-  validates :surcharges, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :data_used, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :surcharges, presence: true, 
+    :numericality => { :greater_than_or_equal_to => 0, :less_than => 10000 }
+  validates :data_used, presence: true, 
+    :numericality => { :greater_than_or_equal_to => 0, :less_than => 1000 }
   
   belongs_to :bill
   belongs_to :user

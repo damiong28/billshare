@@ -14,9 +14,12 @@ class Bill < ActiveRecord::Base
   before_create :update_bill
   before_update :update_bill
   
-  validates :amount, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :total_data, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :data_cost, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :amount, presence: true, 
+    :numericality => { :greater_than_or_equal_to => 0, :less_than => 10000 }
+  validates :total_data, presence: true, 
+    :numericality => { :greater_than_or_equal_to => 0, :less_than => 1000 }
+  validates :data_cost, presence: true, 
+    :numericality => { :greater_than_or_equal_to => 0, :less_than => 10000 }
   validates :date, uniqueness: true
   
   belongs_to :account

@@ -43,6 +43,17 @@ feature 'Creating a new bill:' do
     expect(page).to have_content("Data cost must be greater than or equal to 0")
   end
   
+  scenario "amounts can't overflow data constraints" do
+    click_link 'New Bill'
+    fill_in 'bill_amount', with: '10000'
+    fill_in 'bill_total_data', with: '1000'
+    fill_in 'bill_data_cost', with: '10000'
+    click_button 'Start Bill'
+    expect(page).to have_content("Amount must be less than 10000")
+    expect(page).to have_content("Total data must be less than 1000")
+    expect(page).to have_content("Data cost must be less than 10000")
+  end
+  
    scenario "restrict access to account owner" do
     other_account = create(:account, email: "bar@foo.com", id: 2)
     create(:bill)

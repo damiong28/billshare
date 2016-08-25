@@ -54,6 +54,16 @@ feature 'Creating a new charge:' do
     expect(page).to have_content("Data used must be greater than or equal to 0")
   end
   
+  scenario "amounts can't overflow data constraints" do
+    visit '/bills/1/charges/new'
+    select 'testuser', from: 'charge_user_id'
+    fill_in 'charge_surcharges', with: '10000'
+    fill_in 'charge_data_used', with: '10000'
+    click_button 'Create Charge'
+    expect(page).to have_content("Surcharges must be less than 10000")
+    expect(page).to have_content("Data used must be less than 1000")
+  end
+  
   scenario "restrict access to account owner" do
     other_account = create(:account, email: "bar@foo.com", id: 2)
     create(:charge)
