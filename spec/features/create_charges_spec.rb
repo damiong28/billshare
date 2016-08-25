@@ -85,10 +85,10 @@ feature 'Creating a new charge:' do
     expect(find("#subtotal")).to have_content("$0.00")
     create(:charge)
     visit '/bills/1'
-    expect(find('#data-subtotal')).to have_content("10.0 GB")
-    expect(find('#percent-total')).to have_content("100.0%")
-    expect(find('#data-share-total')).to have_content("$40.00")
-    expect(find("#surcharges-total")).to have_content("$60.00")
-    expect(find("#subtotal")).to have_content("$100.00")
+    expect(find('#data-subtotal')).to have_content("5.0 GB")
+    expect(find('#percent-total')).to have_content("50.0%")
+    expect(find('#data-share-total')).to have_content("$20.00")
+    expect(find("#surcharges-total")).to have_content("$30.00")
+    expect(find("#subtotal")).to have_content("$50.00")
   end
 end 

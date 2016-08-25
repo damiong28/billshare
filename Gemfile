@@ -19,6 +19,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'sqlite3', '1.3.11'
+  gem 'capybara-email'
 end
 
 group :development do

@@ -11,6 +11,8 @@ on the member pages and the homepage.
 
 * Ruby version: 2.3.0p0
 
+* Rails version: 4.2.5 
+
 * System dependencies: Bootstrap
 
 * How to run the test suite: rspec
@@ -23,5 +25,5 @@ Then you can create and seed the database by running "rake db:create",
   
   The login is "user@example.com" and the password is "password".
 
-Thanks for stopping by! This is a work in progress, I work on it everyday and 
-new features are added/refactored constantly! 
+Thanks for stopping by! This is a work in progress, and new features are 
+added/refactored constantly! 
