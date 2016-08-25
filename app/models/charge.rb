@@ -18,7 +18,7 @@ class Charge < ActiveRecord::Base
     :get_date
   after_update :set_user_balance, :update_bill
   
-  after_destroy :update_bill
+  after_destroy :update_bill, :set_user_balance
     
   validates :user_id, presence: true
   validates :surcharges, presence: true, 

@@ -33,7 +33,7 @@ class ChargesController < ApplicationController
   def destroy
     @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
     @charge.destroy
-    flash[:success] = "Charge deleted"
+    flash[:success] = "Charge deleted!"
     redirect_to bill_url(params[:bill_id])
   end
     
