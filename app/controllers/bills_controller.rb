@@ -1,7 +1,8 @@
 class BillsController < ApplicationController
     before_action :authenticate_account!, only: [:show, :new, :create, 
-    :edit, :destroy]
-    before_action :correct_account, only: [:show, :edit, :update, :destroy]
+      :edit, :destroy]
+    before_action :correct_account, only: [:show, :edit, :update, :destroy, 
+      :send_bill]
     
     
   def index

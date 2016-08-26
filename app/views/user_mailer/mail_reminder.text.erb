@@ -1,0 +1,11 @@
+Hi there, <%= @user.name %>!
+
+Just a reminder that you have an open balance of <%= number_to_currency(@user.balance) %>
+
+<% if @user.message.present? %>
+<%= @user.message %>
+<% else %>
+Please send payment at your earliest convenience.
+<% end %>
+
+Sent with BillShare

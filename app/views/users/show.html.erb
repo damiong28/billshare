@@ -24,6 +24,9 @@
                 <%= render @charges, selector: "short" %>
               </tbody>
             </table>
+            <%= link_to "Send Reminder", send_reminder_url, 
+                class: "btn btn-primary pull-right", 
+                data: { confirm: "Send reminder of unpaid charges?" } %>
           <% else %>
             <p><br/>You haven't entered any charges for this user yet.</p>
           <% end %>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Hi there, <%= @user.name %>!</h3>
+    <p>
+      Just a reminder that you have an open balance of <%= number_to_currency(@user.balance) %><br>
+    </p>
+    <table style="border: 1px solid black">
+      <thead>
+        <tr>
+          <th style="border: 1px solid black; padding: 5px">Bill Date</th>
+          <th style="border: 1px solid black; padding: 5px">Data Used</th>
+          <th style="border: 1px solid black; padding: 5px">Amount Due</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @charges, selector: "email" %>
+      </tbody>
+    </table><br>
+    <% if @user.message.present? %>
+      <p><%= @user.message %></p>
+    <% else %>
+      <p>Please send payment at your earliest convenience.</p>
+    <% end %>
+    <p><b>Sent with BillShare</b></p>
+  </body>
+</html>

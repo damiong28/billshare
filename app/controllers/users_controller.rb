@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_account!
-  before_action :correct_account, only: [:edit, :show, :destroy, :update]
+  before_action :correct_account, only: [:edit, :show, :destroy, :update, 
+    :send_reminder]
     
   def index
     @users = User.where(:account_id => current_account.id)
@@ -44,6 +45,13 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = "User deleted."
     redirect_to users_url
+  end
+  
+  def send_reminder
+    @user = User.find(params[:id])
+    UserMailer.mail_reminder(@user).deliver_later
+    flash[:success] = "Reminder sent!"
+    redirect_to @user
   end
   
   private

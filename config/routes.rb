@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :charges
   end
   get 'bills/:id/send', to: 'bills#send_bill', as: :send_bill
+  get 'users/:id/send', to: 'users#send_reminder', as: :send_reminder
   get 'settings', to: 'accounts#settings', as: :settings
   get 'reports', to: 'accounts#reports', as: :reports
   

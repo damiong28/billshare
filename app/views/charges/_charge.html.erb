@@ -1,5 +1,15 @@
 <tr>
-  <% if selector == "short" %>
+  <% if selector == "email" %>
+    <td style="border: 1px solid black; padding: 5px; text-align: right;">
+     <%= charge.date.strftime( "%b %Y") %>
+    </td>
+    <td style="border: 1px solid black; padding: 5px; text-align: right;">
+     <%= charge.data_used %> GB
+    </td>
+    <td style="border: 1px solid black; padding: 5px; text-align: right;">
+     <%= number_to_currency(charge.personal_total) %>
+    </td>
+  <% elsif selector == "short" %>
     <td><%= link_to charge.date.strftime("%B %Y"), charge.bill %></td>
     <td><%= charge.data_used %> GB</td>
     <td><%= number_to_currency(charge.personal_total) %></td>
