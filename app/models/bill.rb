@@ -20,7 +20,6 @@ class Bill < ActiveRecord::Base
     :numericality => { :greater_than_or_equal_to => 0, :less_than => 1000 }
   validates :data_cost, presence: true, 
     :numericality => { :greater_than_or_equal_to => 0, :less_than => 10000 }
-  validates :date, uniqueness: true
   
   belongs_to :account
   has_many :charges, dependent: :destroy
