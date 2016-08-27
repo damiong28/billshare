@@ -5,9 +5,9 @@ feature 'Edit a charge:' do
   background do
     account = create(:account)
     sign_in_with account
-    user = create(:user)
-    bill = create(:bill)
-    charge = create(:charge)
+    create(:user)
+    create(:bill)
+    create(:charge)
   end
   
   scenario 'can edit a charge via the bill show page' do

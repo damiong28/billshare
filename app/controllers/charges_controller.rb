@@ -46,7 +46,7 @@ class ChargesController < ApplicationController
   end
   
   def correct_account
-      @charge = Charge.find_by(:bill_id == params[:bill_id], :id == params[:id])
+      @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
       unless @charge.account_id == current_account.id
         flash[:warning]="That charge doesn't belong to you!"
         redirect_to root_path_url
