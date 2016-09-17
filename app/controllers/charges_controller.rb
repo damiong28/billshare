@@ -24,7 +24,7 @@ class ChargesController < ApplicationController
     find_charge
     if @charge.update_attributes(charge_params)
         flash[:success] = "Charge updated!"
-        redirect_to bill_url(params[:bill_id])
+        redirect_to :back
     else
         render 'edit'
     end

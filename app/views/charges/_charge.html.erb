@@ -13,7 +13,9 @@
     <td><%= link_to charge.date.strftime("%B %Y"), charge.bill %></td>
     <td><%= charge.data_used %> GB</td>
     <td><%= number_to_currency(charge.personal_total) %></td>
-    <td><%= paid_boolean(charge) %></td>
+    <td><%= link_to paid_boolean(charge), 
+      bill_charge_path(charge: { :paid => !charge.paid }, bill_id: charge.bill_id, id: charge.id ), 
+      method: :patch, remote: true %></td>
   <% else %>
     <td><%= link_to charge.user.name, charge.user %></td>
     <td><%= charge.data_used %> GB</td>

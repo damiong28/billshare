@@ -19,6 +19,8 @@ feature 'Edit a charge:' do
     fill_in 'charge_data_used', with: '5'
     click_button 'Update Charge'
     expect(page).to have_content('Charge updated!')
+    click_link 'BillShare'
+    visit 'bills/1'
     expect(page).to have_content("5.0 GB")
     expect(page).to have_content("50.0%")
     expect(page).to have_content("$20.00")

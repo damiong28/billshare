@@ -21,8 +21,9 @@
           <%= f.label "Total cost for Data:" %>
           <%= f.text_field :data_cost, class: "form-control" %>
         </div>
-        <%= f.submit "Update Bill", class: 'btn btn-success' %>
+        <%= f.submit "Update Bill", class: 'btn btn-success pull-left' %>
       <% end %>
+      <%= link_to "Cancel", :back, class: "btn btn-default pull-right" %>
     </div>
   </div>
 </div>

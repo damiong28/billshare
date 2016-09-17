@@ -22,8 +22,9 @@
           <%= f.text_field :data_cost, class: "form-control" %>
         </div>
         <%= f.hidden_field :account_id, :value => current_account.id %>
-        <%= f.submit "Start Bill", class: "btn btn-success" %>
+        <%= f.submit "Start Bill", class: "btn btn-success pull-left" %>
       <% end %>
+        <%= link_to "Cancel", :back, class: "btn btn-default pull-right" %>
     </div>
   </div>
 </div>
