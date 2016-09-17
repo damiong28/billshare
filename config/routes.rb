@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :bills do
-    resources :charges
+    resources :charges, only: [:create, :new, :edit, :update, :destroy]
   end
   get 'bills/:id/send', to: 'bills#send_bill', as: :send_bill
   get 'users/:id/send', to: 'users#send_reminder', as: :send_reminder

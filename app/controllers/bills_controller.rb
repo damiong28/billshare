@@ -26,16 +26,16 @@ class BillsController < ApplicationController
   end
   
   def show
-    @bill = Bill.find(params[:id])
+    find_bill
     @charges = @bill.charges
   end
   
   def edit
-    @bill = Bill.find(params[:id])
+    find_bill
   end
   
   def update
-    @bill = Bill.find(params[:id])
+    find_bill
     if @bill.update_attributes(bill_params)
       flash[:success] = "Bill updated!"
       redirect_to @bill
@@ -45,14 +45,14 @@ class BillsController < ApplicationController
   end
   
   def destroy
-    @bill = Bill.find(params[:id])
+    find_bill
     @bill.destroy
     flash[:success] = "Bill deleted!"
     redirect_to bills_url
   end
   
   def send_bill
-    @bill = Bill.find(params[:id])
+    find_bill
     @bill.charges.each do |charge|
       BillMailer.mail_bill(@bill, charge).deliver_later
     end
@@ -68,10 +68,14 @@ class BillsController < ApplicationController
     end
     
     def correct_account
-      @bill = Bill.find(params[:id])
+      find_bill
       unless (@bill.account_id == current_account.id)
           flash[:danger]="That bill doesn't belong to you!"
           redirect_to root_path_url
       end
+    end
+    
+    def find_bill
+      @bill = Bill.find(params[:id])
     end
 end

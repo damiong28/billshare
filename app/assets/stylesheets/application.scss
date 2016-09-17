@@ -52,7 +52,7 @@
 
 .login-bg {
   	background-image: image-url("aurora-optimized.jpg");
-  	height:100vh;
+  	height: calc(100vh - 52px);
 }
 
 .white-text {

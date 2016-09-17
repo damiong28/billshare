@@ -17,11 +17,11 @@ class ChargesController < ApplicationController
   end
   
   def edit
-    @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
+    find_charge
   end
   
   def update
-    @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
+    find_charge
     if @charge.update_attributes(charge_params)
         flash[:success] = "Charge updated!"
         redirect_to bill_url(params[:bill_id])
@@ -31,7 +31,7 @@ class ChargesController < ApplicationController
   end
   
   def destroy
-    @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
+    find_charge
     @charge.destroy
     flash[:success] = "Charge deleted!"
     redirect_to bill_url(params[:bill_id])
@@ -46,10 +46,14 @@ class ChargesController < ApplicationController
   end
   
   def correct_account
-      @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
+      find_charge
       unless @charge.account_id == current_account.id
         flash[:warning]="That charge doesn't belong to you!"
         redirect_to root_path_url
       end
+  end
+  
+  def find_charge
+      @charge = Charge.find_by(:bill_id => params[:bill_id], :id => params[:id])
   end
 end
