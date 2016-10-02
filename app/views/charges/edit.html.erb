@@ -27,7 +27,7 @@
         <%= f.hidden_field :bill_id, :value => params[:bill_id] %>
         <%= f.hidden_field :paid, :value => false %>
         <%= f.submit class: "btn btn-success pull-left" %>
-        <%= link_to "Cancel", :back, class: "btn btn-default pull-right" %>
+        <%= link_to "Cancel", bill_path(params[:bill_id]), class: "btn btn-default pull-right" %>
       <% end %>
     </div>
   </div>
