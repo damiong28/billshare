@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721171701) do
+ActiveRecord::Schema.define(version: 20161104225234) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160721171701) do
     t.integer  "account_id",                                              null: false
     t.decimal  "surcharges",      precision: 6, scale: 2
     t.decimal  "data_used",       precision: 6, scale: 3
-    t.decimal  "data_percentage", precision: 4, scale: 2
+    t.decimal  "data_percentage", precision: 6, scale: 4
     t.decimal  "data_share",      precision: 6, scale: 2
     t.decimal  "personal_total",  precision: 6, scale: 2
     t.boolean  "paid",                                    default: false, null: false
