@@ -27,7 +27,7 @@ class BillsController < ApplicationController
   
   def show
     find_bill
-    @charges = @bill.charges
+    @charges = @bill.charges.order("user_id ASC")
   end
   
   def edit
