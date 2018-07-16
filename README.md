@@ -25,5 +25,4 @@ Then you can create and seed the database by running "rake db:create",
   
   The login is "user@example.com" and the password is "password".
 
-Thanks for stopping by! This is a work in progress, and new features are 
-added/refactored constantly! 
+Thanks for stopping by! 
