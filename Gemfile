@@ -20,6 +20,7 @@ group :development, :test do
   gem 'capybara'
   gem 'sqlite3', '1.3.11'
   gem 'capybara-email'
+  gem 'pry-rails'
 end
 
 group :development do
