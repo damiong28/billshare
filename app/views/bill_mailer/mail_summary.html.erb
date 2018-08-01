@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Hi there!</h3>
+    <p>
+      Here is the summary of the <%= @bill.date.strftime("%B") %> phone bill.<br>
+    </p>
+    <table style="border: 1px solid black">
+      <thead>
+        <tr>
+          <th style="border: 1px solid black; padding: 5px">Bill Date</th>
+          <th style="border: 1px solid black; padding: 5px">Total Data</th>
+          <th style="border: 1px solid black; padding: 5px">Bill Data Fee</th>
+          <th style="border: 1px solid black; padding: 5px">Bill Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td style="border: 1px solid black; padding: 5px; text-align: right;">
+          <%= @bill.date.strftime( "%b %Y") %>
+        </td>
+        <td style="border: 1px solid black; padding: 5px; text-align: right;">
+          <%= @bill.total_data %> GB
+        </td>
+        <td style="border: 1px solid black; padding: 5px; text-align: right;">
+          <%= number_to_currency(@bill.data_cost) %>
+        </td>
+        <td style="border: 1px solid black; padding: 5px; text-align: right;">
+          <%= number_to_currency(@bill.amount) %>
+        </td>
+      </tbody>
+    </table><br>
+    <table style="border: 1px solid black">
+      <thead>
+        <tr>
+          <th style="border: 1px solid black; padding: 5px">Name</th>
+          <th style="border: 1px solid black; padding: 5px">Data Used</th>
+          <th style="border: 1px solid black; padding: 5px">% of Total</th>
+          <th style="border: 1px solid black; padding: 5px">Share of Data Fee</th>
+          <th style="border: 1px solid black; padding: 5px">Surcharges</th>
+          <th style="border: 1px solid black; padding: 5px">Total Due</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bill.charges.each do |charge|%>
+          <tr>
+            <td style="border: 1px solid black; padding: 5px; text-align: right;">
+              <%= charge.user.name %>
+            </td>
+            <td style="border: 1px solid black; padding: 5px; text-align: right;">
+              <%= charge.data_used%> GB
+            </td>
+            <td style="border: 1px solid black; padding: 5px; text-align: right;">
+              <%= charge.data_percentage * 100 %>%
+            </td>
+            <td style="border: 1px solid black; padding: 5px; text-align: right;">
+              <%= number_to_currency(charge.data_share) %>
+            </td>
+            <td style="border: 1px solid black; padding: 5px; text-align: right;">
+              <%= number_to_currency(charge.surcharges) %>
+            </td>
+            <td style="border: 1px solid black; padding: 5px; text-align: right;">
+              <b><%= number_to_currency(charge.personal_total) %></b>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p><b>Sent with BillShare</b></p>
+  </body>
+</html>

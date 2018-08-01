@@ -1,0 +1,22 @@
+Hi there!
+
+Here is the summary of the <%= @bill.date.strftime("%B") %> phone bill.
+
+Bill Date:           <%= @bill.date.strftime( "%b %Y") %>
+Total Data:          <%= @bill.total_data %> GB
+Bill Data Fee:       <%= number_to_currency(@bill.data_cost) %>
+Bill Total:          <%= number_to_currency(@bill.amount) %>
+
+<% @bill.charges.each do |charge| %>
+Name:                <%= charge.user.name %>
+Data Used:           <%= charge.data_used %>GB
+Percentage of Total: <%= charge.data_percentage * 100 %>%
+
+Share of Data Bill:  <%= number_to_currency(charge.data_share) %>
+Surcharges:          <%= number_to_currency(charge.surcharges) %>
+______________________________________________________________
+Total Due:           <%= number_to_currency(charge.personal_total) %>
+<% end %>
+
+
+Sent with BillShare

@@ -53,6 +53,7 @@ class BillsController < ApplicationController
   
   def send_bill
     find_bill
+    BillMailer.mail_summary(@bill, current_account).deliver_later
     @bill.charges.each do |charge|
       BillMailer.mail_bill(@bill, charge).deliver_later
     end
