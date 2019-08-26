@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:name, :email, :message, :account_id, 
-        :balance)
+        :balance, :manager_id)
     end
     
     def correct_account

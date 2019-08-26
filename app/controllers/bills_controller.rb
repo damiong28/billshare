@@ -55,7 +55,13 @@ class BillsController < ApplicationController
     find_bill
     BillMailer.mail_summary(@bill, current_account).deliver_later
     @bill.charges.each do |charge|
-      BillMailer.mail_bill(@bill, charge).deliver_later
+      if charge.user.a_manager?
+        BillMailer.manager_bill(@bill, charge).deliver_later
+      elsif charge.user.manager_id.present?
+        # don't send stuff to managed user
+      else
+        BillMailer.mail_bill(@bill, charge).deliver_later
+      end
     end
     flash[:success] = "Bill sent!"
     redirect_to root_path_url

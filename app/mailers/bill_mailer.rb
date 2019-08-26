@@ -22,4 +22,12 @@ class BillMailer < ApplicationMailer
     mail(to: @user.email, subject: "#{@bill.date.strftime("%B")} Phone Bill Summary")
   end
 
+  def manager_bill(bill, charge)
+    @charge = charge
+    @bill = bill
+    @manager = User.find(charge.user_id)
+    @users = @manager.managed
+    mail(to: @manager.email, subject: "#{@bill.date.strftime("%B")} Phone Bill")
+  end
+
 end

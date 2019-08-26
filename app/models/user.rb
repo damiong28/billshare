@@ -11,5 +11,15 @@ class User < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX }
   has_many :charges, dependent: :destroy
   belongs_to :account
-  
+  alias_attribute :user, :manager
+
+  def a_manager?
+    User.where('manager_id = ?', id).any?
+  end
+
+  def managed
+    User.where('manager_id = ?', id)
+  end
 end
+
+
