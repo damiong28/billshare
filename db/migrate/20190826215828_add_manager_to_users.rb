@@ -1,6 +1,5 @@
 class AddManagerToUsers < ActiveRecord::Migration
   def change
-    add_reference :users, :manager, index: true
-    add_foreign_key :users, column: :manager_id
+    add_column :users, :manager_id, :integer
   end
 end
