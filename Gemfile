@@ -13,6 +13,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'chartkick'
 gem 'faker'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

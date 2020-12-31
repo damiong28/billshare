@@ -21,6 +21,7 @@
                    <%= render @bills %>
                   </tbody>
                 </table>
+                <%= paginate @bills %>
               <% else %>
                 <p><br>You haven't created any bills yet.</p>
               <% end %>

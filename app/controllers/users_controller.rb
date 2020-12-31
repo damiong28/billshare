@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   
   def show
     @user=User.find(params[:id])
-    @charges = @user.charges.order(date: :desc)
+    @charges = @user.charges.order(date: :desc).page(params[:page])
   end
   
   def edit

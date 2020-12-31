@@ -5,6 +5,9 @@
           <h1 class="text-center"><%= @user.name %></h1>
           <%= link_to "Edit User Info", edit_user_url, 
               class: "btn btn-primary" %>
+           <%= link_to "Send Reminder", send_reminder_url,
+                       class: "btn btn-primary",
+                       data: { confirm: "Send reminder of unpaid charges?" } %>
           <%= link_to "Delete User", @user, method: :delete, 
               class: "btn btn-danger pull-right", 
               data: { confirm: "Delete #{@user.name}?" } %>
@@ -24,9 +27,7 @@
                 <%= render @charges, selector: "short" %>
               </tbody>
             </table>
-            <%= link_to "Send Reminder", send_reminder_url, 
-                class: "btn btn-primary pull-right", 
-                data: { confirm: "Send reminder of unpaid charges?" } %>
+              <%= paginate @charges %>
           <% else %>
             <p><br/>You haven't entered any charges for this user yet.</p>
           <% end %>
